@@ -7,12 +7,21 @@ import operator
 import string
 from collections import OrderedDict
 
+class info:
+	def __init__(self, favorite, underdog, linetotal, line, total):
+		self.favorite = favorite
+		self.underdog = underdog
+		self.linetotal = linetotal
+		self.line = linetotal[::2]
+		self.total = linetotal[1::2]
+
+"""Set up website to be parsed"""
 opener = urllib2.build_opener()
 opener.addheaders = [('User-agent', 'Mozilla/5.0')]
-
 url = "http://www.footballlocks.com/nfl_lines.shtml"
 ourUrl = opener.open(url).read()
 soup = BeautifulSoup(ourUrl)
+
 tds = []
 date = []
 home = []
@@ -25,6 +34,8 @@ homenumber = []
 awaynumber = []
 homesemi = []
 awaysemi =[]
+
+
 
 for i in soup.findAll('p'):
 	for j in i.findAll('td'):
