@@ -52,8 +52,8 @@ def modify():
 	for i,j in zip(info.favorite, info.underdog):
 		info.matchups[i] = j
 	for i,j in zip(info.line, info.total):
-		info.favpoints.append(round(j/2 - i, 0))
-		info.undpoints.append(round(j/2 + i, 0))
+		info.favpoints.append(round((j/2) - (i/2), 0))
+		info.undpoints.append(round((j/2) + (i/2), 0))
 	for i,j in zip(info.favorite, info.favpoints):
 		info.finalfav.append("%s (%s) " % (i, j))
 	for i,j in zip(info.underdog, info.undpoints):
@@ -70,7 +70,9 @@ def final():
 def main():
 	gather()
 	modify()
-	print "Vegas Score Predictions\n"
+	print "-------------------------"
+	print "Vegas Score Predictions"
+	print "-------------------------"
 	final()
 
 if  __name__ =='__main__':main()
