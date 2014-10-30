@@ -39,9 +39,13 @@ def gather():
 	
 	"""Put information in class"""
 	for i,j in enumerate(tds):
-		if "-" in j.text:
+		if "-"  in j.text:
 			info.favorite.append(tds[i-1].text)
 			info.underdog.append(tds[i+1].text)
+		if "&nbsp;" in j.text:
+			info.favorite.append(tds[i-1].text)
+			info.underdog.append(tds[i+1].text)
+			info.linetotal.append(float(0))
 		if re.match("^[0-9.-]+$", j.text):
 			info.linetotal.append(float(j.text))
 	info.line = info.linetotal[::2]
