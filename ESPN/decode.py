@@ -89,7 +89,7 @@ def main():
 	data = importjson()
 	finaldata = grabevents(data)
 	htmldata = htmlconvert(finaldata)
-	htmlfinal =["<!DOCTYPE html><html><head><title>ESPN Scoreboard</title><link rel='stylesheet' type='text/css' href='mlb.css' media='screen' /></head><body><table border='1' cellspacing='0'><tr><thead><td colspan='2'>Major League Baseball</td></thead></tr>"]
+	htmlfinal =["<!DOCTYPE html><html><head><title>ESPN Scoreboard</title><link rel='stylesheet' type='text/css' href='mlb.css' media='screen' /></head><body><table border='1' cellspacing='0'><tr><thead><th colspan='2'>Major League Baseball</th></thead></tr>"]
 	for i in htmldata:
 		htmlfinal.append(i)
 	htmlfinal.append("</table></body></html>")
