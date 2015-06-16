@@ -73,9 +73,9 @@ def htmlconvert(finaldata):
 	htmldata = []
 	for i in finaldata:
 		if type(i.gamestatus) is datetime:
-			htmldata.append("<td><table><tr><td><table><tr><td>%s</td><td>%s</td></tr><tr><td width=100px;>%s</td><td>%s</td></tr></table></td><td width=108px;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s</td></tr></table></td>" % (i.hometeam, i.homescore, i.awayteam, i.awayscore, i.gamedate, i.gamestatus.strftime("%I:%M %p")))
+			htmldata.append("<td><table><tr><td><table><tr><td>%s</td><td>%s</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s</td></tr><tr><td width=100px;>%s</td><td>%s</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s</td></tr></table></td></tr></table></td>" % (i.hometeam, i.homescore, i.gamedate, i.awayteam, i.awayscore, i.gamestatus.strftime("%I:%M %p")))
 		else: 
-			htmldata.append("<td><table><tr><td><table><tr><td>%s</td><td>%s</td></tr><tr><td width=100px;>%s</td><td>%s</td></tr></table></td><td width=108px;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s</td></tr></table></td>" % (i.hometeam, i.homescore, i.awayteam, i.awayscore, i.gamedate, i.gamestatus))
+			htmldata.append("<td><table><tr><td><table><tr><td>%s</td><td>%s</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s</td></tr><tr><td width=100px;>%s</td><td>%s</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s</td></tr></table></td></tr></table></td>" % (i.hometeam, i.homescore, i.gamedate, i.awayteam, i.awayscore, i.gamestatus))
 
 	for place in range(len(htmldata)):
 		if place % 2 == 0:
@@ -89,7 +89,7 @@ def main():
 	data = importjson()
 	finaldata = grabevents(data)
 	htmldata = htmlconvert(finaldata)
-	htmlfinal =["<html><body><table border='1'>"]
+	htmlfinal =["<html><body><table border='1'><tr><td colspan='2'>Major League Baseball</td></tr>"]
 	for i in htmldata:
 		htmlfinal.append(i)
 	htmlfinal.append("</table></body></html>")
